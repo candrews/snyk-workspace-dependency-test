@@ -1,6 +1,8 @@
 Test for Snyk
 =============
 
+[This issue was reported to snyk as request 52724](https://support.snyk.io/hc/en-us/requests/52724).
+
 Yarn doesn't seem to be able to handle one yarn workspace package depending on another. In this repository, `workspace1` depends on `workspace2`. When resolving `workspace1`'s dependencies, Snyk fails, as it fails to realize that the `workspace2` dependency is satisfied via the workspace, reporting `error: OutOfSyncError: Dependency workspace2@0.0.1 was not found in yarn.lock`. The error message is wrong because `workspace2@0.0.1` _must not be in `yarn.lock`_ - if it was present, that would be an real error.
 
 The yarn documentation for inter-package workspace dependencies can be found at https://classic.yarnpkg.com/lang/en/docs/workspaces/#toc-how-to-use-it
